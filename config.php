@@ -5,7 +5,7 @@ date_default_timezone_set( "America/Sao_Paulo" );  // http://www.php.net/manual/
 // Get DATABASE connection details from Heroku environment variable
 $dbdetails = parse_url(getenv('DATABASE_URL'));
 
-define( "DB_DSN", "mysql:host=" . $dbdetails["host"] . ";port=" . $dbdetails["port"] . ";dbname=" . ltrim($dbdetails["path"], '/'));
+define( "DB_DSN", "pgsql:host=" . $dbdetails["host"] . ";port=" . $dbdetails["port"] . ";dbname=" . ltrim($dbdetails["path"], '/'));
 define( "DB_USERNAME", $dbdetails["user"] );
 define( "DB_PASSWORD", $dbdetails["pass"] );
 define( "CLASS_PATH", "classes" );
