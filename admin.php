@@ -149,18 +149,10 @@ function deleteArticle() {
 
   $article->deleteImages();
   $article->delete();
-  $drop_query = "ALTER TABLE articles DROP COLUMN id;";
-  $setincrement_query = "ALTER TABLE articles AUTO_INCREMENT = 1;";
-  $reincludecolumn_query = "ALTER TABLE articles ADD id int UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+  $reset_serial_query = "ALTER SEQUENCE articles_id_seq RESTART WITH 1;";
   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
   
-  $st = $conn->prepare ($drop_query);
-  $st->execute();
-  
-  $st = $conn->prepare ( $setincrement_query );
-  $st->execute();
-  
-  $st = $conn->prepare ( $reincludecolumn_query );
+  $st = $conn->prepare ($reset_serial_query);
   $st->execute();
   
   header( "Location: admin.php?status=articleDeleted" );
