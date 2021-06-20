@@ -200,7 +200,7 @@ class Article
 
   public static function getById( $id ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "SELECT *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles WHERE id = :id";
+    $sql = "SELECT *, extract(epoch FROM publicationDate) FROM articles WHERE id = :id";
     $st = $conn->prepare( $sql );
     $st->bindValue( ":id", $id, PDO::PARAM_INT );
     $st->execute();
@@ -263,7 +263,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO articles ( publicationDate, title, summary, content, imageExtension, tagString ) VALUES ( FROM_UNIXTIME(:publicationDate), :title, :summary, :content, :imageExtension, :tagString )";
+    $sql = "INSERT INTO articles ( publicationDate, title, summary, content, imageExtension, tagString ) VALUES ( extract(epoch FROM :publicationDate), :title, :summary, :content, :imageExtension, :tagString )";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":publicationDate", $this->publicationDate, PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
