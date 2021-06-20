@@ -214,8 +214,6 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
   */
 
   public function insert() {
-	
-	$this->newsID = null;
     // Does the News object already have an ID?
     if ( !is_null( $this->newsID ) ) trigger_error ( "News::insert(): Attempt to insert a News object that already has its ID property set (to $this->newsID).", E_USER_ERROR );
 
