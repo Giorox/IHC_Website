@@ -267,7 +267,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
 
     // Delete the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $st = $conn->prepare ( "DELETE FROM news WHERE newsID = :newsID LIMIT 1" );
+    $st = $conn->prepare ( "DELETE FROM news WHERE newsID = :newsID" );
     $st->bindValue( ":newsID", $this->newsID, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
