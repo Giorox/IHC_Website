@@ -157,7 +157,7 @@ class News
 
   public static function getById( $newsID ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "SELECT *, newsID AS newsID FROM news WHERE newsID = :newsID";
+    $sql = "SELECT * FROM news WHERE newsID = :newsID";
     $st = $conn->prepare( $sql );
     $st->bindValue( ":newsID", $newsID, PDO::PARAM_INT );
     $st->execute();
@@ -187,7 +187,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
     if ($order_check !== FALSE)
      {
 
-     $sql = "SELECT *, newsID AS newsID FROM news
+     $sql = "SELECT * FROM news
         ORDER BY " . $order . " LIMIT :numRows";
      $st = $conn->prepare($sql);
      $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);
