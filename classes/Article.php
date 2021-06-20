@@ -263,7 +263,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO articles ( publicationDate, title, summary, content, imageExtension, tagString ) VALUES ( extract(epoch FROM :publicationDate), :title, :summary, :content, :imageExtension, :tagString )";
+    $sql = "INSERT INTO articles ( publicationDate, title, summary, content, imageExtension, tagString ) VALUES ( to_timestamp(:publicationDate)::date, :title, :summary, :content, :imageExtension, :tagString )";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":publicationDate", $this->publicationDate, PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
