@@ -230,7 +230,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
     if ($order_check !== FALSE)
      {
 
-     $sql = "SELECT SQL_CALC_FOUND_ROWS *, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles
+     $sql = "SELECT count(*) OVER() AS total_count, UNIX_TIMESTAMP(publicationDate) AS publicationDate FROM articles
         ORDER BY " . $order . " LIMIT :numRows";
      $st = $conn->prepare($sql);
      $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);
