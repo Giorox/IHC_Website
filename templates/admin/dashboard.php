@@ -47,7 +47,7 @@
 								<?php if($news->title == "") { ?>
 									<h5 class="col-6">Sem título - ID: <?php echo $news->newsID?></h5>
 								<?php }else { ?>
-									<h5 class="col-6"><?php echo $news->title?></h5>
+									<h5 class="col-6"><?php echo $news->title?> and ID: <?php echo $news->newsID?></h5>
 								<?php } ?>
 								
 								<?php if($news->content == "") { ?>
