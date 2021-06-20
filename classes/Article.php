@@ -288,7 +288,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
    
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE articles SET publicationDate=FROM_UNIXTIME(:publicationDate), title=:title, summary=:summary, content=:content, imageExtension=:imageExtension, tagString=:tagString WHERE id = :id";
+    $sql = "UPDATE articles SET publicationDate=to_timestamp(:publicationDate)::date, title=:title, summary=:summary, content=:content, imageExtension=:imageExtension, tagString=:tagString WHERE id = :id";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":publicationDate", $this->publicationDate, PDO::PARAM_INT );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
@@ -313,7 +313,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
 
     // Delete the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $st = $conn->prepare ( "DELETE FROM articles WHERE id = :id LIMIT 1" );
+    $st = $conn->prepare ( "DELETE FROM articles WHERE id = :id" );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
