@@ -187,7 +187,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
     if ($order_check !== FALSE)
      {
 
-     $sql = "SELECT SQL_CALC_FOUND_ROWS *, newsID AS newsID FROM news
+     $sql = "SELECT *, newsID AS newsID FROM news
         ORDER BY " . $order . " LIMIT :numRows";
      $st = $conn->prepare($sql);
      $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);
@@ -202,7 +202,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
      }
 
     // Now get the total number of articles that matched the criteria
-    $sql = "SELECT FOUND_ROWS() AS totalRows";
+    $sql = "SELECT count(*) OVER() AS totalRows";
     $totalRows = $conn->query( $sql )->fetch();
     $conn = null;
     return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
