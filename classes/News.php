@@ -197,7 +197,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
-		 trigger_error(var_dump($row), E_USER_ERROR);
+		 trigger_error($row["newsid"], E_USER_ERROR);
          }
      }
 
