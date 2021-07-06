@@ -43,10 +43,6 @@
 								<h5><strong><label for="conteudo">Tags</label></strong></h5>
 								<textarea class="form-control" name="tagString" id="tagString" placeholder="Tags do blog" required maxlength="255" rows="1"><?php echo htmlspecialchars( $results['article']->tagString )?></textarea>
 							</div>
-							<div>
-								<h5><strong><label for="publicationDate">Data de Publicação</label></label></strong></h5>
-								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate?>" />
-							</div>
 							<br>
 							<div class="form-group">
 								<input class="btn btn-primary" type="submit" name="saveChanges" value="Salvar alterações" />

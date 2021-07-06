@@ -14,11 +14,6 @@ class Article
   public $id = null;
 
   /**
-  * @var int When the article was first published
-  */
-  public $publicationDate = null;
-
-  /**
   * @var string Full title of the article
   */
   public $title = null;
@@ -52,7 +47,6 @@ class Article
 
   public function __construct( $data=array() ) {
     if ( isset( $data['id'] ) ) $this->id = (int) $data['id'];
-    if ( isset( $data['publicationdate'] ) ) $this->publicationDate = $data['publicationdate'];
     if ( isset( $data['title'] ) ) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()áéíóúãõçàâêîôûÁÉÍÓÚÂÊÎÔÛÃÕÇËÄÏÖÜ]/", "", $data['title'] );
     if ( isset( $data['summary'] ) ) $this->summary = $data['summary'];
     if ( isset( $data['content'] ) ) $this->content = $data['content'];
@@ -71,16 +65,6 @@ class Article
 
     // Store all the parameters
     $this->__construct( $params );
-
-    // Parse and store the publication date
-    if ( isset($params['publicationdate']) ) {
-      $publicationDate = explode ( '-', $params['publicationdate'] );
-
-      if ( count($publicationDate) == 3 ) {
-        list ( $y, $m, $d ) = $publicationDate;
-        $this->publicationDate = mktime ( 0, 0, 0, $m, $d, $y );
-      }
-    }
   }
 
    /**
@@ -214,16 +198,16 @@ class Article
   * Returns all (or a range of) Article objects in the DB
   *
   * @param int Optional The number of rows to return (default=all)
-  * @param string Optional column by which to order the articles (default="publicationdate DESC")
+  * @param string Optional column by which to order the articles (default="id DESC")
   * @return Array|false A two-element array : results => array, a list of Article objects; totalRows => Total number of articles
   */
 
-public static function getList( $numRows=1000000, $order="publicationdate DESC" ) {
+public static function getList( $numRows=1000000, $order="id DESC" ) {
 
  $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
  //Your whitlelist of order bys.
- $order_whitelist = array("publicationdate DESC", "id DESC");
+ $order_whitelist = array("id DESC");
 
  // see if we have such a name, if it is not in the array then $order will be false.
         $order_check = array_search($order, $order_whitelist); 
@@ -263,9 +247,8 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
 
     // Insert the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO articles ( publicationdate, title, summary, content, imageextension, tagstring ) VALUES ( to_timestamp(:publicationdate)::date, :title, :summary, :content, :imageextension, :tagstring )";
+    $sql = "INSERT INTO articles ( title, summary, content, imageextension, tagstring ) VALUES ( :title, :summary, :content, :imageextension, :tagstring )";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
@@ -288,9 +271,8 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
    
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE articles SET publicationdate=to_timestamp(:publicationdate)::date, title=:title, summary=:summary, content=:content, imageextension=:imageextension, tagstring=:tagstring WHERE id = :id";
+    $sql = "UPDATE articles SET title=:title, summary=:summary, content=:content, imageextension=:imageextension, tagstring=:tagstring WHERE id = :id";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
