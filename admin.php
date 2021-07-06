@@ -245,6 +245,8 @@ function listArticles() {
   $results3['news'] = $data3['results'];
   $results3['totalRows'] = $data3['totalRows'];
   
+  trigger_error(var_dump($results3['news']), E_USER_ERROR);
+  
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Erro: Artigo não encontrado.";
 	if ( $_GET['error'] == "newsNotFound" ) $results['errorMessage'] = "Erro: Notícia não encontrada.";

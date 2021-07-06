@@ -190,7 +190,7 @@
 									<?php if ( $imagePath = $recent->getImagePath( IMG_TYPE_THUMB ) ) { ?>
 										<img class="mb-3" src="<?php echo $imagePath?>" alt="Article image" height="200px" width="100%" alt="Article image" class="img-fluid"/>
 									<?php }else { ?>
-										<img class="mb-3" src="http://placehold.it/200x200" width="100%" alt="Article image" class="img-fluid"/>
+										<img class="mb-3" src="http://via.placeholder.com/200" width="100%" alt="Article image" class="img-fluid"/>
 									<?php } ?>
 									<h5><?php echo $recent->title?></h5>
 									<small><i class="icon-calendar"></i> <?php echo strftime('%d/%m/%G', $recent->publicationDate)?></small>

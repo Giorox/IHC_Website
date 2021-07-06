@@ -39,7 +39,6 @@
 				<?php } ?>
 				<br>
 				<h4><strong>Notícias</strong></h4>
-				<?php error_log(var_dump($results3['news'])); ?>
 				<ul class="nav nav-tabs nav-stacked"  style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results3['news'] as $news ) { ?>
 						<li>
