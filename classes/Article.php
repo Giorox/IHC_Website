@@ -265,7 +265,7 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "INSERT INTO articles ( publicationdate, title, summary, content, imageextension, tagstring ) VALUES ( to_timestamp(:publicationdate)::date, :title, :summary, :content, :imageextension, :tagstring )";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_INT );
+    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
@@ -290,7 +290,7 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $sql = "UPDATE articles SET publicationdate=to_timestamp(:publicationdate)::date, title=:title, summary=:summary, content=:content, imageextension=:imageextension, tagstring=:tagstring WHERE id = :id";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_INT );
+    $st->bindValue( ":publicationdate", $this->publicationDate, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
