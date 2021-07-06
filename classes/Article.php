@@ -245,7 +245,7 @@ public static function getList( $numRows=1000000, $order="publicationDate DESC" 
      }
 
     // Now get the total number of articles that matched the criteria
-    $sql = "SELECT count(*) OVER() AS totalRows";
+    $sql = "SELECT count(*) AS exact_count FROM articles";
     $totalRows = $conn->query( $sql )->fetch();
     $conn = null;
     return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
