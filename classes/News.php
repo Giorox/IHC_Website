@@ -187,7 +187,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
     if ($order_check !== FALSE)
      {
 
-     $sql = "SELECT newsID FROM news ORDER BY " . $order . " LIMIT :numRows";
+     $sql = "SELECT * FROM news ORDER BY " . $order . " LIMIT :numRows";
      $st = $conn->prepare($sql);
      $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);
      $st->execute();
@@ -197,7 +197,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
-		 trigger_error(var_dump($news), E_USER_ERROR);
+		 trigger_error(var_dump($row), E_USER_ERROR);
          }
      }
 
