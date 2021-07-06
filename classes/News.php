@@ -42,7 +42,7 @@ class News
 
   public function __construct( $data=array() ) {
     if ( isset( $data['newsid'] ) ) $this->newsID = (int) $data['newsid'];
-	if ( isset( $data['imageextension_news'] ) ) $this->imageExtension_news = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\$ a-zA-Z0-9()]/", "", $data['imageExtension_news'] );
+	if ( isset( $data['imageextension_news'] ) ) $this->imageExtension_news = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\$ a-zA-Z0-9()]/", "", $data['imageextension_news'] );
     if ( isset( $data['content'] ) ) $this->content = $data['content'];
 	if ( isset( $data['title'] ) ) $this->title = $data['title'];
 	if ( isset( $data['subtitle'] ) ) $this->subtitle = $data['subtitle'];
@@ -197,7 +197,6 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
-		 //trigger_error(var_dump($news), E_USER_ERROR);
          }
      }
 
