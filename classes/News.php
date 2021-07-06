@@ -197,10 +197,9 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
+		 trigger_error(var_dump($row), E_USER_ERROR);
          }
      }
-	 
-	trigger_error(var_dump($list), E_USER_ERROR);
 
     // Now get the total number of articles that matched the criteria
     $sql = "SELECT count(*) OVER() AS totalRows";
