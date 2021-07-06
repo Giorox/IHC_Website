@@ -18,6 +18,7 @@
 		<div class="row">  
 			<div class="col-8">
 				<div class="blog-post">
+					<?php echo var_dump($results);?>
 					<form action="admin.php?action=<?php echo $results['formAction']?>" method="post" enctype="multipart/form-data" class="comment-form">
 					<input type="hidden" name="articleId" value="<?php echo $results['article']->id ?>"/>
 						<form>
@@ -43,24 +44,6 @@
 								<h5><strong><label for="conteudo">Tags</label></strong></h5>
 								<textarea class="form-control" name="tagString" id="tagString" placeholder="Tags do blog" required maxlength="255" rows="1"><?php echo htmlspecialchars( $results['article']->tagString )?></textarea>
 							</div>
-		
-							<?php if ( $results['article'] && $imagePath = $results['article']->getImagePath() ) { ?>
-								<div>
-									<h5><strong><label>Imagem Atual</label></strong></h5>
-									<img id="articleImage" src="<?php echo $imagePath ?>" alt="Article Image" />
-								</div>
-						
-								<div>
-							 		<label></label>
-									<input type="checkbox" name="deleteImage" id="deleteImage" value="yes"/ > <label for="deleteImage">Excluir imagem</label>
-								</div>
-							<?php } ?>
-						
-							<div>
-								<h5><strong><label for="image">Nova Imagem</label></label></strong></h5>
-								<input type="file" name="image" id="image" placeholder="Escolha uma imagem" maxlength="255" />
-							</div>
-							<br>
 							<div>
 								<h5><strong><label for="publicationDate">Data de Publicação</label></label></strong></h5>
 								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "d-m-Y", $results['article']->publicationDate ) : "" ?>" />
