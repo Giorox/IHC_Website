@@ -243,7 +243,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
    
     // Update the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE news SET imageextension_news=:imageextension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsis = :newsid";
+    $sql = "UPDATE news SET imageextension_news=:imageextension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsid = :newsid";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":imageextension_news", $this->imageExtension_news, PDO::PARAM_STR );
 	$st->bindValue( ":content", $this->content, PDO::PARAM_STR );

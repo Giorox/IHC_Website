@@ -39,10 +39,10 @@
 				<?php } ?>
 				<br>
 				<h4><strong>Notícias</strong></h4>
-				<ul class="nav nav-tabs nav-stacked"  style="height: 300px;overflow-y: scroll;">
+				<ul class="list-group"  style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results3['news'] as $news ) { ?>
 						<li>
-						<a style="cursor:pointer" onclick="location='admin.php?action=editNews&amp;newsID=<?php echo $news->newsID?>'" class="list-group list-group-item-action align-items-start">
+						<a style="cursor:pointer" onclick="location='admin.php?action=editNews&amp;newsID=<?php echo $news->newsID?>'" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100">
 								<?php if($news->title == "") { ?>
 									<h5 class="col-6">Sem título - ID: <?php echo $news->newsID?></h5>
