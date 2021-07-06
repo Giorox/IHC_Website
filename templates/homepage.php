@@ -156,33 +156,33 @@
     
 
 <!-- Start Articles -->
-    <div class="site-section block-15">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-            <h2>Artigos Recentes</h2>
-          </div>
+<div class="site-section block-15">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 mx-auto text-center mb-5 section-heading">
+				<h2>Artigos Recentes</h2>
+			</div>
         </div>
         
-	<div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner">
-			<?php $numRows = 0;
-				  $numCards = 0;
-			?>
-			<?php foreach ( $results['articles'] as $recent ) { ?>
-				<?php if ($numRows == 0 && $numCards%3 == 0) { ?>
-					<div class="carousel-item active row">
-						<div class="row">
-				<?php } elseif ($numCards%3 == 0) { ?>
-					<div class="carousel-item row">
-						<div class="row">
-				<?php } $numRows++; ?>
-				<!-- WRITE PHP to put data and to incremet numCards -->
+		<div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<?php $numRows = 0;
+					$numCards = 0;
+				?>
+				<?php foreach ( $results['articles'] as $recent ) { ?>
+					<?php if ($numRows == 0 && $numCards%3 == 0) { ?>
+						<div class="carousel-item active row">
+							<div class="row">
+					<?php } elseif ($numCards%3 == 0) { ?>
+						<div class="carousel-item row">
+							<div class="row">
+					<?php } $numRows++; ?>
+					<!-- WRITE PHP to put data and to incremet numCards -->
 					<div class="col-6 col-md-4">
 						<div class="card" style="border: none">
 							<a href=".?action=viewArticle&amp;articleId=<?php echo $recent->id?>">
@@ -201,14 +201,14 @@
 							</a>
 						</div>
 					</div>
-				<?php $numCards++; ?>
-				<?php if ($numCards%3 == 0) { ?>
+					<?php $numCards++; ?>
+					<?php if ($numCards%3 == 0) { ?>
 						</div>
 					</div>
+					<?php } ?>
 				<?php } ?>
-			<?php } ?>
+			</div>
 		</div>
-	</div>
 		
 		
 		
@@ -216,4 +216,6 @@
 	</div>
 </div>
 </div>
+</div>
+
 <?php include "templates/include/footer.php"?>
