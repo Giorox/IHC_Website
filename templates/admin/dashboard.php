@@ -49,7 +49,7 @@
 								<?php }else { ?>
 									<h5 class="col-12"><?php echo $news->title?></h5>
 								<?php } ?>
-								<small>ID: <?php echo $news->newsID?></small>
+								<small><?php echo $news->newsID?></small>
 							</div>	
 							<?php if($news->content == "") { ?>
 								<small class="mb-1">Sem texto</small>
@@ -62,10 +62,10 @@
 				</ul>
 				
 				<h4><strong>Artigos</strong></h4>
-				<ul class="nav nav-tabs nav-stacked" style="height: 300px;overflow-y: scroll;">
+				<ul class="list-group" style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results['articles'] as $article ) { ?>
 						<li>
-						<a style="cursor:pointer" onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'" class="list-group list-group-item-action align-items-start">
+						<a style="cursor:pointer" onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'" class="list-group-item list-group-item-action flex-column align-items-start">
 							<div class="d-flex w-100">
 								<h5 class="mb-1"><?php echo $article->title?></h5>
 								<small class="col-1"><?php echo strftime('%d/%m/%G', $article->publicationDate)?></small>

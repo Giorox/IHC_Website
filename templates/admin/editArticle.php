@@ -86,9 +86,6 @@
               <h5>Você esta logado como <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>.</h5>
 				<a href="admin.php?action=newArticle" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Novo Artigo</a>
 				<a href="admin.php?action=newNews" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Nova Notícia</a>
-				<a href="admin.php?action=newEvent" class="btn btn-primary" style="margin-bottom: 1.5em">Programar Novo Evento</a>
-				<a href="#" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Novo Ponto Cantado</a>
-				<p></p>
 				<a href="admin.php?action=logout" class="btn btn-primary" style="margin-bottom: 1.5em">Sair</a>
             </div>
 			</aside>

@@ -32,23 +32,6 @@
 								<input type="text" class="form-control" name="content" id="content" placeholder="Conteúdo da notícia" autofocus maxlength="1000" value="<?php echo htmlspecialchars( $results3['news']->content )?>"/>
 								
 							</div>
-		
-							<?php if ( $results3['news'] && $imagePath = $results3['news']->getImagePath() ) { ?>
-								<div>
-									<h5><strong><label>Imagem Atual</label></strong></h5>
-									<img id="articleImage" src="<?php echo $imagePath ?>" alt="Article Image" />
-								</div>
-						
-								<div>
-									<label></label>
-									<h5><input type="checkbox" name="deleteImage" id="deleteImage" value="yes"/ > <strong><label for="deleteImage">Excluir imagem</label></strong></h5>
-								</div>
-							<?php } ?>
-						
-							<div>
-								<h5><strong><label for="image">Nova Imagem</label></strong>
-								<input type="file" name="image" id="image" placeholder="Escolha uma imagem" maxlength="255" /></h5>
-							</div>
 							<br>
 							<br>
 							<div class="form-group">
@@ -71,9 +54,6 @@
               <h5>Você esta logado como <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>.</h5>
 				<a href="admin.php?action=newArticle" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Novo Artigo</a>
 				<a href="admin.php?action=newNews" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Nova Notícia</a>
-				<a href="admin.php?action=newEvent" class="btn btn-primary" style="margin-bottom: 1.5em">Programar Novo Evento</a>
-				<a href="#" class="btn btn-primary" style="margin-bottom: 1.5em">Publicar Novo Ponto Cantado</a>
-				<p></p>
 				<a href="admin.php?action=logout" class="btn btn-primary" style="margin-bottom: 1.5em">Sair</a>
             </div>
 			</aside>
