@@ -200,7 +200,7 @@ class Article
 
   public static function getById( $id ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "SELECT *, extract(epoch FROM publicationdate) FROM articles WHERE id = :id";
+    $sql = "SELECT * FROM articles WHERE id = :id";
     $st = $conn->prepare( $sql );
     $st->bindValue( ":id", $id, PDO::PARAM_INT );
     $st->execute();
@@ -230,7 +230,7 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
     if ($order_check !== FALSE)
      {
 
-     $sql = "SELECT *, extract(epoch FROM publicationdate) FROM articles
+     $sql = "SELECT * FROM articles
         ORDER BY " . $order . " LIMIT :numRows";
      $st = $conn->prepare($sql);
      $st->bindValue(":numRows", $numRows, PDO::PARAM_INT);

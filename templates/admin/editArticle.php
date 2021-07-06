@@ -18,7 +18,6 @@
 		<div class="row">  
 			<div class="col-8">
 				<div class="blog-post">
-					<?php echo $results['article']->publicationDate;?>
 					<form action="admin.php?action=<?php echo $results['formAction']?>" method="post" enctype="multipart/form-data" class="comment-form">
 					<input type="hidden" name="articleId" value="<?php echo $results['article']->id ?>"/>
 						<form>
