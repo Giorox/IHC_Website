@@ -41,7 +41,7 @@ class News
   */
 
   public function __construct( $data=array() ) {
-    if ( isset( $data['newsID'] ) ) $this->newsID = (int) $data['newsID'];
+    if ( isset( $data['newsID'] ) ) $this->newsID = (int) $data['newsid'];
 	if ( isset( $data['imageExtension_news'] ) ) $this->imageExtension_news = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\$ a-zA-Z0-9()]/", "", $data['imageExtension_news'] );
     if ( isset( $data['content'] ) ) $this->content = $data['content'];
 	if ( isset( $data['title'] ) ) $this->title = $data['title'];
@@ -157,9 +157,9 @@ class News
 
   public static function getById( $newsID ) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "SELECT * FROM news WHERE newsID = :newsID";
+    $sql = "SELECT * FROM news WHERE newsid = :newsid";
     $st = $conn->prepare( $sql );
-    $st->bindValue( ":newsID", $newsID, PDO::PARAM_INT );
+    $st->bindValue( ":newsid", $newsID, PDO::PARAM_INT );
     $st->execute();
     $row = $st->fetch();
     $conn = null;
@@ -197,7 +197,6 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
-		 trigger_error($row["newsid"], E_USER_ERROR);
          }
      }
 
@@ -244,13 +243,13 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
    
     // Update the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE news SET imageExtension_news=:imageExtension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsID = :newsID";
+    $sql = "UPDATE news SET imageExtension_news=:imageExtension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsis = :newsid";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":imageExtension_news", $this->imageExtension_news, PDO::PARAM_STR );
 	$st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
 	$st->bindValue( ":subtitle", $this->subtitle, PDO::PARAM_STR );
-    $st->bindValue( ":newsID", $this->newsID, PDO::PARAM_INT );
+    $st->bindValue( ":newsid", $this->newsID, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
   }
@@ -267,8 +266,8 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
 
     // Delete the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $st = $conn->prepare ( "DELETE FROM news WHERE newsID = :newsID" );
-    $st->bindValue( ":newsID", $this->newsID, PDO::PARAM_INT );
+    $st = $conn->prepare ( "DELETE FROM news WHERE newsid = :newsid" );
+    $st->bindValue( ":newsid", $this->newsID, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
   }
