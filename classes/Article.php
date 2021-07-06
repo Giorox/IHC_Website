@@ -52,7 +52,7 @@ class Article
 
   public function __construct( $data=array() ) {
     if ( isset( $data['id'] ) ) $this->id = (int) $data['id'];
-    if ( isset( $data['publicationdate'] ) ) $this->publicationDate = (int) $data['publicationdate'];
+    if ( isset( $data['publicationdate'] ) ) $this->publicationDate = $data['publicationdate'];
     if ( isset( $data['title'] ) ) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()áéíóúãõçàâêîôûÁÉÍÓÚÂÊÎÔÛÃÕÇËÄÏÖÜ]/", "", $data['title'] );
     if ( isset( $data['summary'] ) ) $this->summary = $data['summary'];
     if ( isset( $data['content'] ) ) $this->content = $data['content'];
@@ -241,6 +241,7 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
          {
          $article = new Article($row);
          $list[] = $article;
+		 trigger_error(var_dump($row));
          }
      }
 
