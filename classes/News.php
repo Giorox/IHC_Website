@@ -42,7 +42,7 @@ class News
 
   public function __construct( $data=array() ) {
     if ( isset( $data['newsid'] ) ) $this->newsID = (int) $data['newsid'];
-	if ( isset( $data['imageExtension_news'] ) ) $this->imageExtension_news = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\$ a-zA-Z0-9()]/", "", $data['imageExtension_news'] );
+	if ( isset( $data['imageextension_news'] ) ) $this->imageExtension_news = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\$ a-zA-Z0-9()]/", "", $data['imageExtension_news'] );
     if ( isset( $data['content'] ) ) $this->content = $data['content'];
 	if ( isset( $data['title'] ) ) $this->title = $data['title'];
 	if ( isset( $data['subtitle'] ) ) $this->subtitle = $data['subtitle'];
@@ -197,7 +197,7 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
          {
          $news = new News($row);
          $list[] = $news;
-		 trigger_error(var_dump($news), E_USER_ERROR);
+		 //trigger_error(var_dump($news), E_USER_ERROR);
          }
      }
 
@@ -221,9 +221,9 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
 
     // Insert the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "INSERT INTO news ( imageExtension_news, content, title, subtitle ) VALUES ( :imageExtension_news, :content, :title, :subtitle )";
+    $sql = "INSERT INTO news ( imageextension_news, content, title, subtitle ) VALUES ( :imageextension_news, :content, :title, :subtitle )";
     $st = $conn->prepare ( $sql );
-	$st->bindValue( ":imageExtension_news", $this->imageExtension_news, PDO::PARAM_STR );
+	$st->bindValue( ":imageextension_news", $this->imageExtension_news, PDO::PARAM_STR );
 	$st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
 	$st->bindValue( ":subtitle", $this->subtitle, PDO::PARAM_STR );
@@ -244,9 +244,9 @@ public static function getList( $numRows=1000000, $order="newsID ASC" ) {
    
     // Update the News
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE news SET imageExtension_news=:imageExtension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsis = :newsid";
+    $sql = "UPDATE news SET imageextension_news=:imageextension_news, content=:content, title=:title, subtitle=:subtitle WHERE newsis = :newsid";
     $st = $conn->prepare ( $sql );
-    $st->bindValue( ":imageExtension_news", $this->imageExtension_news, PDO::PARAM_STR );
+    $st->bindValue( ":imageextension_news", $this->imageExtension_news, PDO::PARAM_STR );
 	$st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
 	$st->bindValue( ":subtitle", $this->subtitle, PDO::PARAM_STR );
