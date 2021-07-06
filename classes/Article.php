@@ -241,7 +241,6 @@ public static function getList( $numRows=1000000, $order="publicationdate DESC" 
          {
          $article = new Article($row);
          $list[] = $article;
-		 trigger_error(var_dump($row));
          }
      }
 

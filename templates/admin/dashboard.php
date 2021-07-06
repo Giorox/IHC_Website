@@ -41,14 +41,13 @@
 				<h4><strong>Mensagens</strong></h4>
 				<ul class="list-group"  style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results2['messages'] as $messages ) { ?>
-						<?php echo var_dump($messages);?>
 						<li class="list-group-item list-group-item-action flex-column align-items-start">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="col-12"><?php echo $messages->subject?></h5>
-								<small><?php echo $messages->messageid?></small>
+								<h5 class="col-12"><?php echo $messages["subject"]?></h5>
+								<small><?php echo $messages["messageid"]?></small>
 							</div>
-							<p><?php echo $messages->message?></p>
-							<small class="mb-1"><?php echo $messages->name?> - <?php echo $messages->email?></small>
+							<p><?php echo $messages["message"]?></p>
+							<small class="mb-1"><?php echo $messages["name"]?> - <?php echo $messages["email"]?></small>
 						</li>
 					<?php } ?>
 				</ul>
