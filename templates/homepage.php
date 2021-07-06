@@ -16,7 +16,7 @@
 	  <!-- End Default Layer -->
 	  <!-- Layer 1 -->
 	  <?php foreach ( $results3['news'] as $news ) { ?>
-		<div class="site-blocks-cover-homepage" style="background-image: url(https://via.placeholder.com/5759x3310.png);" alt="" data-interval="3000" data-aos="fade" data-stellar-background-ratio="0.9" data-pause="hover">		
+		<div class="site-blocks-cover-homepage" style="background-image: url(https://via.placeholder.com/5000x3000.png);" alt="" data-interval="3000" data-aos="fade" data-stellar-background-ratio="0.9" data-pause="hover">		
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<div class="col-md-10 text-center" data-aos="fade">
@@ -187,11 +187,7 @@
 						<div class="card" style="border: none">
 							<a href=".?action=viewArticle&amp;articleId=<?php echo $recent->id?>">
 								<div class="card-body">
-									<?php if ( $imagePath = $recent->getImagePath( IMG_TYPE_THUMB ) ) { ?>
-										<img class="mb-3" src="<?php echo $imagePath?>" alt="Article image" height="200px" width="100%" alt="Article image" class="img-fluid"/>
-									<?php }else { ?>
-										<img class="mb-3" src="http://via.placeholder.com/200" width="100%" alt="Article image" class="img-fluid"/>
-									<?php } ?>
+									<img class="mb-3" src="http://via.placeholder.com/200" width="100%" alt="Article image" class="img-fluid"/>
 									<h5><?php echo $recent->title?></h5>
 									<small><i class="icon-calendar"></i> <?php echo strftime('%d/%m/%G', $recent->publicationDate)?></small>
 									<div class="card-text">
