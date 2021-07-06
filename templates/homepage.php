@@ -189,7 +189,6 @@
 								<div class="card-body">
 									<img class="mb-3" src="http://via.placeholder.com/200" width="100%" alt="Article image" class="img-fluid"/>
 									<h5><?php echo $recent->title?></h5>
-									<small><i class="icon-calendar"></i> <?php echo strftime('%d/%m/%G', $recent->publicationDate)?></small>
 									<div class="card-text">
 										<?php echo $recent->summary?>
 									</div>
