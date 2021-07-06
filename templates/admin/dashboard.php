@@ -39,6 +39,7 @@
 				<?php } ?>
 				<br>
 				<h4><strong>Mensagens</strong></h4>
+				<?php echo var_dump($results2['messages']);?>
 				<ul class="list-group"  style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results2['messages'] as $messages ) { ?>
 						<li class="list-group-item list-group-item-action flex-column align-items-start">
@@ -82,7 +83,7 @@
 						<a style="cursor:pointer" onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'" class="list-group-item list-group-item-action flex-column align-items-start">
 							<div class="d-flex w-100">
 								<h5 class="mb-1"><?php echo $article->title?></h5>
-								<small class="col-1"><?php echo strftime('%d/%m/%G', $article->publicationDate)?></small>
+								<small class="col-1"><?php echo $article->publicationDate?></small>
 							</div>
 						</a>
 						</li>
