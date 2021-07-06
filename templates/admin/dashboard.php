@@ -42,20 +42,20 @@
 				<ul class="list-group"  style="height: 300px;overflow-y: scroll;">
 					<?php foreach ( $results3['news'] as $news ) { ?>
 						<li>
-						<a style="cursor:pointer" onclick="location='admin.php?action=editNews&amp;newsID=<?php echo $news->newsID?>'" class="list-group-item list-group-item-action">
-							<div class="d-flex w-100">
+						<a style="cursor:pointer" onclick="location='admin.php?action=editNews&amp;newsID=<?php echo $news->newsID?>'" class="list-group-item list-group-item-action flex-column align-items-start">
+							<div class="d-flex w-100 justify-content-between">
 								<?php if($news->title == "") { ?>
-									<h5 class="col-6">Sem título - ID: <?php echo $news->newsID?></h5>
+									<h5 class="mb-1">Sem título</h5>
 								<?php }else { ?>
-									<h5 class="col-6"><?php echo $news->title?> and ID: <?php echo $news->newsID?></h5>
+									<h5 class="col-12"><?php echo $news->title?></h5>
 								<?php } ?>
-								
-								<?php if($news->content == "") { ?>
-									<small class="col-12">Sem texto - ID: <?php echo $news->newsID?></small>
-								<?php }else { ?>
-									<small class="col-12"><?php echo $news->content?></small>
-								<?php } ?>
-							</div>
+								<small>ID: <?php echo $news->newsID?></small>
+							</div>	
+							<?php if($news->content == "") { ?>
+								<small class="mb-1">Sem texto</small>
+							<?php }else { ?>
+								<small class="mb-1"><?php echo $news->content?></small>
+							<?php } ?>
 						</a>
 						</li>
 					<?php } ?>
