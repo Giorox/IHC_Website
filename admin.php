@@ -233,12 +233,43 @@ function deleteNews() {
   header( "Location: admin.php?status=newsDeleted" );
 }
 
+function getMessageList(){
+	$conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+
+    $sql = "SELECT * FROM usermessages ORDER BY messageid DESC";
+    $st = $conn->prepare($sql);
+    $st->execute();
+    $list = array();
+
+    while ($row = $st->fetch())
+    {
+		$message = array();
+		$message["messageid"] = $row[0];
+		$message["name"] = $row[1];
+		$message["email"] = $row[2];
+		$message["subject"] = $row[3];
+		$message["message"] = $row[4];
+        $list[] = $message;
+    }
+
+    // Now get the total number of articles that matched the criteria
+    $sql = "SELECT count(*) AS exact_count FROM usermessages";
+    $totalRows = $conn->query( $sql )->fetch();
+    $conn = null;
+    return ( array ( "results" => $list, "totalRows" => $totalRows[0] ) );
+}
+
 function listArticles() {
   $results = array();
   $data = Article::getList();
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Dashboard | TUCTVC";
+  
+  $results2 = array();
+  $data2 = getMessageList();
+  $results2['messages'] = $data2['results'];
+  $results2['totalRows'] = $data2['totalRows'];
   
   $results3 = array();
   $data3 = News::getList();

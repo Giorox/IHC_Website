@@ -18,7 +18,7 @@
 		<div class="row">  
 			<div class="col-8">
 				<div class="blog-post">
-					<?php echo var_dump($results);?>
+					<?php echo $results['article']->publicationDate;?>
 					<form action="admin.php?action=<?php echo $results['formAction']?>" method="post" enctype="multipart/form-data" class="comment-form">
 					<input type="hidden" name="articleId" value="<?php echo $results['article']->id ?>"/>
 						<form>
@@ -46,7 +46,7 @@
 							</div>
 							<div>
 								<h5><strong><label for="publicationDate">Data de Publicação</label></label></strong></h5>
-								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "d-m-Y", $results['article']->publicationDate ) : "" ?>" />
+								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "Y-m-d", $results['article']->publicationDate ) : "" ?>" />
 							</div>
 							<br>
 							<div class="form-group">
