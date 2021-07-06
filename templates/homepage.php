@@ -16,7 +16,7 @@
 	  <!-- End Default Layer -->
 	  <!-- Layer 1 -->
 	  <?php foreach ( $results3['news'] as $news ) { ?>
-		<div class="site-blocks-cover-homepage" style="background-image: url(<?php echo ($news->getImagePath( IMG_TYPE_FULLSIZE )) ?>);" alt="" data-interval="3000" data-aos="fade" data-stellar-background-ratio="0.9" data-pause="hover">		
+		<div class="site-blocks-cover-homepage" style="background-image: url(https://via.placeholder.com/5759x3310.png);" alt="" data-interval="3000" data-aos="fade" data-stellar-background-ratio="0.9" data-pause="hover">		
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<div class="col-md-10 text-center" data-aos="fade">
