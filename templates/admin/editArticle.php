@@ -45,7 +45,7 @@
 							</div>
 							<div>
 								<h5><strong><label for="publicationDate">Data de Publicação</label></label></strong></h5>
-								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate ? date( "Y-m-d", $results['article']->publicationDate ) : "" ?>" />
+								<input type="date" name="publicationDate" id="publicationDate" placeholder="AAAA-MM-DD" required maxlength="10" value="<?php echo $results['article']->publicationDate?>" />
 							</div>
 							<br>
 							<div class="form-group">
