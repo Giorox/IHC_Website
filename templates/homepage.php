@@ -214,4 +214,5 @@
 		
 	  </div>
 	</div>
+</div>
 <?php include "templates/include/footer.php"?>
