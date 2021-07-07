@@ -26,19 +26,12 @@
 						<h2 class="h2 mb-5"><?php echo $results['article']->title?></h2>
 					</div>
 					</div>
-              
-				<div class="post-meta first"><i class="icon-calendar"></i><span> <?php echo utf8_encode(strftime('%d de %B de %G', $results['article']->publicationDate))?></span></li>
-				</div>
 			</div>
             <div class="clearfix">
             </div>
 			<br>
 			<div class="text-center">
-			<?php if ( $imagePath = $results['article']->getImagePath( IMG_TYPE_FULLSIZE ) ) { ?>
-				<img class="img-fluid rounded" src="<?php echo $imagePath?>" alt="" />
-			<?php }else { ?>
 				<img class="rounded float-left" src="http://placehold.it/200x100" alt="">
-			<?php } ?>
 			</div>
             <br>
             <p><div class="text-justify"><?php echo $results['article']->summary ?></div></p>
@@ -61,8 +54,6 @@
               <ul class="recent-posts">
                 <?php foreach ( $recentpost['results'] as $recent ) { ?>
 					<li><strong><a href=".?action=viewArticle&amp;articleId=<?php echo $recent->id?>"><?php echo $recent->title?></a></strong>
-						<div class="clear"></div>
-						<span class="date"><i class="icon-calendar"></i> <?php echo utf8_encode(strftime('%d de %B, %G', $recent->publicationDate))?></span>
 					</li>
 				<?php } ?>
               </ul>
