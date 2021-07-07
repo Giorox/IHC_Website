@@ -40,7 +40,7 @@ include "templates/include/header.php";?>
 				<div class="media-with-text">
 					<div class="img-border-sm mb-4">
 						<a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-								<img src="http://placehold.it/200x200" alt="Article image" class="img-fluid"/>
+								<img src="http://via.placeholder.com/200" alt="Article image" class="img-fluid"/>
 						</a>
 					</div>
 					<a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">

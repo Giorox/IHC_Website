@@ -31,7 +31,7 @@
             </div>
 			<br>
 			<div class="text-center">
-				<img class="rounded float-left" src="http://placehold.it/200x100" alt="">
+				<img class="rounded float-left" src="http://via.placeholder.com/200x100" alt="">
 			</div>
             <br>
             <p><div class="text-justify"><?php echo $results['article']->summary ?></div></p>
