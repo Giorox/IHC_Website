@@ -40,16 +40,11 @@ include "templates/include/header.php";?>
 				<div class="media-with-text">
 					<div class="img-border-sm mb-4">
 						<a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-							<?php if ( $imagePath = $article->getImagePath( IMG_TYPE_FULLSIZE ) ) { ?>
-								<img src="<?php echo $imagePath?>" alt="Article image" class="img-fluid"/>
-							<?php }else { ?>
 								<img src="http://placehold.it/200x200" alt="Article image" class="img-fluid"/>
-							<?php } ?>
 						</a>
 					</div>
 					<a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-					<h2 class="heading mb-0" class="title"><a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo $article->title?></a></h2>
-					<span class="mb-3 d-block post-date"><?php echo strftime('%d/%m/%G', $article->publicationDate)?></a></span>
+					<h2 class="heading mb-0" class="title"><a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>"><?php echo $article->title?></a></h2></a>
 					<p><?php echo $article->summary?></p>
 				</div>
 			  </div>
