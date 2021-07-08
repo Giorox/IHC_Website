@@ -123,7 +123,17 @@
       
 	</div>
 	<script>
-		function validateForm(event, form) {
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		'use strict'
+		
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+		
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+			form.addEventListener('submit', function (event) {
 				if (!form.checkValidity()) {
 					event.preventDefault()
 					event.stopPropagation()
@@ -161,21 +171,29 @@
 				}
 		
 				form.classList.add('was-validated')
-			};
-
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function () {
-		'use strict'
-		
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		var forms = document.querySelectorAll('.needs-validation')
-		
-		// Loop over them and prevent submission
-		Array.prototype.slice.call(forms)
-			.forEach(function (form) {
-			form.addEventListener('submit', validateForm(event, form), false)
+			}, false)
 			})
 		})();
+		
+		function validateForm()
+		{
+			var forms = document.getElementsByClassName('needs-validation')
+			var validation = Array.prototype.filter.call(forms, function(form) 
+			{
+				if (!form.checkValidity())
+				{
+					event.preventDefault()
+					event.stopPropagation()
+
+					// get the "first" invalid field
+					var errorElements = document.querySelectorAll('.form-control:invalid')
+
+					// scroll the user to the invalid field
+					window.scrollTo(0, getOffset(errorElements[0]).top)
+				}
+				form.classList.add('was-validated')
+			})
+		}
 		
 		$(document).ready(function () {
 			$("#closeButton").on('click', function () {
