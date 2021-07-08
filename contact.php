@@ -187,9 +187,6 @@
 
 					// get the "first" invalid field
 					var errorElements = document.querySelectorAll('.form-control:invalid')
-
-					// scroll the user to the invalid field
-					window.scrollTo(0, getOffset(errorElements[0]).top)
 				}
 				form.classList.add('was-validated')
 			})
