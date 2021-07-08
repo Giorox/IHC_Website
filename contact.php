@@ -14,7 +14,7 @@
   <div class="site-section bg-light">
       <div class="container">
 		<div class="row pb-4">
-			<div class="col-8 bg-white p-5">
+			<div class="col-md-8 bg-white p-5">
 				<div class="text">
 					<div class="section-heading text-left">
 						<h2 class="h2 mb-5">Conheça Nossas Redes Sociais</h2>
@@ -26,7 +26,7 @@
 				<p></p>
 				<p><a target="_blank" href="https://www.instagram.com/tuctvc">- Instagram da Tenda de Umbanda Caboclo Tupinambá e Vó Catarina</a></p>
 			</div>
-			<div class="col-4">
+			<div class="col-md-4">
 					<div class="p-4 bg-white">
 					
 					  <h3 class="h5 text-black mb-3">Informações de Contato</h3>
@@ -46,10 +46,10 @@
 			</div>
 		</div>
 		<div class="row pb-4">
-			<div class="col-8">
+			<div class="col-md-8">
 				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.1478466874414!2d-45.89654428502895!3d-23.201281984862884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4a6e1fa2b953%3A0xa7902184c473f398!2sR.%20Esperan%C3%A7a%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP!5e0!3m2!1sen!2sbr!4v1584925816949!5m2!1sen!2sbr" width="100%" height="100%" frameborder="0" style="border:0;" tabindex="0"></iframe>
 			</div>
-			<div class="col-4">
+			<div class="col-md-4">
 					<div class="p-4 bg-white">
 					  <h3 class="h5 text-black mb-3">Mais Informações</h3>
 					  <p style="text-align:justify">Somos uma casa de ora&ccedil;&atilde;o e caridade. Somos Crist&atilde;os, acreditamos na reencarna&ccedil;&atilde;o e em um Deus único. Acreditamos tamb&eacute;m no aux&iacute;lio do encarnado e do desencarnado. N&atilde;o cultuamos o mau e nem fazemos trabalho que prejudiquem as pessoas, pois acreditamos na lei do retorno.</p>
@@ -57,7 +57,7 @@
 				</div>
 		</div>
 		<div class="row pb-4">
-			<div class="col-12">
+			<div class="col-md-12">
 				<div class="p-5 bg-white">
 					<div class="text">
 						<div class="section-heading text-left">
@@ -71,7 +71,7 @@
 						</button>
 					</div>
 
-					<form action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+					<form id="contactForm" action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 						<div class="form-group row">
 							<label for="name" class="col-4 col-form-label">Nome</label> 
 							<div class="col-8">
@@ -123,17 +123,7 @@
       
 	</div>
 	<script>
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function () {
-		'use strict'
-		
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		var forms = document.querySelectorAll('.needs-validation')
-		
-		// Loop over them and prevent submission
-		Array.prototype.slice.call(forms)
-			.forEach(function (form) {
-			form.addEventListener('submit', function (event) {
+		function validateForm(event) {
 				if (!form.checkValidity()) {
 					event.preventDefault()
 					event.stopPropagation()
@@ -171,7 +161,19 @@
 				}
 		
 				form.classList.add('was-validated')
-			}, false)
+			};
+
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		'use strict'
+		
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+		
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+			form.addEventListener('submit', validateForm, false)
 			})
 		})();
 		
@@ -183,6 +185,9 @@
 				document.getElementById('messageCard').classList.remove('alert-danger');
 				document.getElementById('messageCard').classList.remove('alert-success');
 			});
+			
+			const inputs = document.querySelectorAll("#contactForm input");
+			inputs.forEach(e => e.addEventListener("blur", validateForm));
 		});
 	</script>
 

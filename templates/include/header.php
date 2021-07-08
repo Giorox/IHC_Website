@@ -115,7 +115,7 @@
 						  </ul>
 					 </li>
 					 <li><a href="contact.php">Contato</a></li>
-					 <li><a href="admin.php"><span class="icon-lock"></span></a></li>
+					 <li><a href="admin.php"><span class="icon-lock"></span> Admin</a></li>
                     </ul>
                   </div>
                 </nav>
