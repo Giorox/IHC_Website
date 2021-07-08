@@ -123,7 +123,7 @@
       
 	</div>
 	<script>
-		function validateForm(event) {
+		function validateForm(event, form) {
 				if (!form.checkValidity()) {
 					event.preventDefault()
 					event.stopPropagation()
@@ -173,7 +173,7 @@
 		// Loop over them and prevent submission
 		Array.prototype.slice.call(forms)
 			.forEach(function (form) {
-			form.addEventListener('submit', validateForm, false)
+			form.addEventListener('submit', validateForm(event, form), false)
 			})
 		})();
 		
@@ -187,6 +187,7 @@
 			});
 			
 			const inputs = document.querySelectorAll("#contactForm input");
+
 			inputs.forEach(e => e.addEventListener("blur", validateForm));
 		});
 	</script>
